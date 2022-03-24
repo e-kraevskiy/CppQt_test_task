@@ -16,7 +16,7 @@ Popup {
     background: Rectangle {
         anchors.fill: parent
         radius: 10
-        color: "lightgray"
+        color: "gray"
 
         ColumnLayout {
             anchors.fill: parent
@@ -76,7 +76,6 @@ Popup {
 
                     onClicked: {
                         file_dialog.open()
-                        console.log("Выбор папки")
                     }
                 }
                 Button {

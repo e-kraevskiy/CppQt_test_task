@@ -4,5 +4,7 @@
         <file>widgets/qmldir</file>
         <file>widgets/SettingsPopup.qml</file>
         <file>widgets/MouseHandlerWidget.qml</file>
+        <file>widgets/ButtonWidget.qml</file>
+        <file>widgets/NotifyPopup.qml</file>
     </qresource>
 </RCC>

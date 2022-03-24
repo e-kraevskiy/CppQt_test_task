@@ -50,45 +50,13 @@ ApplicationWindow {
         id: settings__popup
     }
 
-    Button {
-        id: setting__button
-        anchors.top: parent.top
-        anchors.left: parent.left
-        anchors.margins: 10
-
-        text: "Настройки"
-
-        background: Rectangle {
-            radius: 5
-            color: "gray"
-            opacity: 0.8
-        }
-
-        onClicked: {
-            console.log("Применить настройки")
-            settings__popup.open()
-        }
+    NotifyPopup {
+        id: notify__popup
     }
 
-    Button {
-        id: save__button
-        anchors.top: parent.top
-        anchors.left: setting__button.right
-        anchors.margins: 10
+    ButtonWidget {}
 
-        text: "Сохранить"
 
-        background: Rectangle {
-            radius: 5
-            color: "gray"
-            opacity: 0.8
-        }
-
-        onClicked: {
-            file_module_.seveResult()
-            console.log("Сохранить")
-        }
-    }
 
     Shortcut {
         sequences: ["Ctrl+Q"]

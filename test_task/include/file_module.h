@@ -21,6 +21,7 @@ public:
 
 public slots:
     void setDirPath(QString dir_path);
+    QString getDirPath() const {return dir_path_;};
     void setTime(int time);
     void setDistance(int distance);
     void seveResult();
@@ -28,7 +29,7 @@ public slots:
 signals:
     void setPreviousResult(int distance);
 private:
-    QString dir_path_ = "/home/eugeniy";
+    QString dir_path_ = "";
     QString distance_ = "";
     QString time_ = "";
 };
