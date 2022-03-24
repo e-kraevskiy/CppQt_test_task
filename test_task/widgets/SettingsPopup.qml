@@ -6,8 +6,8 @@ import QtQuick.Layouts 1.15
 Popup {
     id: root
 
-    width: parent.width / 3
-    height: parent.height / 5
+    width: parent.width / 4
+    height: parent.height / 7
     anchors.centerIn: parent
     closePolicy: Popup.CloseOnPressOutside
     modal: true
@@ -15,16 +15,17 @@ Popup {
 
     background: Rectangle {
         anchors.fill: parent
+        radius: 10
         color: "lightgray"
 
         ColumnLayout {
             anchors.fill: parent
-            spacing: 10
+            spacing: 3
 
             Button {
                 Layout.alignment: Qt.AlignRight | Qt.AlignTop
                 Layout.preferredWidth: parent.width / 4
-                Layout.preferredHeight: parent.height / 7
+                Layout.preferredHeight: parent.height / 5
                 Layout.margins: 5
                 text: "Закрыть"
 
@@ -36,6 +37,8 @@ Popup {
             RowLayout {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
+                Layout.leftMargin: 5
+                Layout.rightMargin: 5
                 Layout.margins: 5
                 spacing: 10
 
@@ -53,23 +56,40 @@ Popup {
                 TextField {
                     id: second_amount__text_field
                     Layout.fillWidth: true
-                    Layout.preferredHeight: parent.height / 2
+                    Layout.preferredHeight: root.height / 4
                     selectionColor: "grey"
                     validator: RegExpValidator {
                         regExp: /\d{1,3}/
                     }
                 }
-
             }
-            Button {
-                Layout.alignment: Qt.AlignRight | Qt.AlignTop
-                Layout.preferredWidth: parent.width / 4
-                Layout.preferredHeight: parent.height / 7
-                Layout.margins: 5
-                text: "Применить"
 
-                onClicked: {
-                    console.log("Применить настройки")
+            RowLayout {
+                Layout.fillWidth: true
+                Layout.preferredHeight: parent.height / 5
+
+                Button {
+                    Layout.preferredWidth: root.width / 3
+                    Layout.fillHeight: true
+                    Layout.margins: 5
+                    text: "Выбрать папку"
+
+                    onClicked: {
+                        file_dialog.open()
+                        console.log("Выбор папки")
+                    }
+                }
+                Button {
+                    Layout.preferredWidth: root.width / 4
+                    Layout.fillHeight: true
+                    Layout.margins: 5
+                    text: "Применить"
+
+                    onClicked: {
+                        mouse_handler_.time =
+                                    parseInt(second_amount__text_field.text)
+                        console.log("Применить настройки")
+                    }
                 }
             }
         }

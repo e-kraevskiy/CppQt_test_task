@@ -30,27 +30,30 @@ endif()
 ####################################
 
 find_package(Qt5 COMPONENTS REQUIRED
-    Core
-    Quick
-    QuickControls2
-    Sql
-    Widgets
-)
+  Core
+  Quick
+  QuickControls2
+  Sql
+  Widgets
+  )
 
 FIND_PACKAGE(OpenCV REQUIRED)
 
 # Сюда добавляем .h-ки из директории include
 set(PROJECT_HEADERS
-    #include/image_list_module.h
-)
+  include/mouse_handler.h
+  include/file_module.h
+  )
 # Сюда добавляем .cpp-ки из директории src
 set(PROJECT_SOURCES
-    src/main.cpp
-)
+  src/main.cpp
+  src/mouse_handler.cpp
+  src/file_module.cpp
+  )
 # Сюда добавляем .qrc-ки
 set(PROJECT_RESOURCES
-    qml.qrc
-)
+  qml.qrc
+  )
 
 qt5_wrap_cpp(${PROJECT_NAME}_MOCS ${PROJECT_HEADERS})
 
@@ -65,7 +68,7 @@ include_directories(
   ${PROJECT_SOURCE_DIR}
   ${Qt5Widgets_INCLUDE_DIRS}
   ${OpenCV_INCLUDE_DIRS}
-)
+  )
 
 link_directories( ${OpenCV_LIBRARY_DIR} )
 
@@ -76,7 +79,7 @@ add_executable(${PROJECT_NAME}
   ${${PROJECT_NAME}_MOCS}
   ${${PROJECT_NAME}_QML}
   ${PROJECT_RESOURCES}
-)
+  )
 
 
 target_compile_definitions(test_task
@@ -87,4 +90,4 @@ target_link_libraries(${PROJECT_NAME}
   Qt5::QuickControls2
   Qt5::Sql
   Qt5::Widgets
-)
+  )

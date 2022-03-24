@@ -2,11 +2,12 @@ import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.15
+import QtQuick.Dialogs 1.1
 
 import widgets 1.0
 
 
-Window {
+ApplicationWindow {
     id: main__window
 
     width: Screen.desktopAvailableWidth
@@ -15,19 +16,34 @@ Window {
     visible: true
     title: qsTr("This is my test progtamm")
 
+
+    FileDialog {
+        id: file_dialog
+        property url previousFolder: ""
+        title: "Please choose a folder"
+        folder: shortcuts.home
+        selectFolder: true
+        onAccepted: {
+            file_module_.setDirPath(file_dialog.fileUrl)
+        }
+        //Если пользователь отменил открытие файла (нажал на "отмена")
+        onRejected: {
+            console.log("Файл не выбран")
+        }
+    }
+
     MouseArea {
         id: mouse_area
         anchors.fill: parent
         hoverEnabled: true
         onPositionChanged: {
-            mouse_handler.x_coordinate = mouseX
-            mouse_handler.y_coordinate = mouseY
-            console.log(mouseX, mouseY)
+            mouse_handler__widget.x_coordinate = mouseX
+            mouse_handler__widget.y_coordinate = mouseY
         }
     }
 
     MouseHandlerWidget {
-        id: mouse_handler
+        id: mouse_handler__widget
     }
 
     SettingsPopup {
@@ -43,7 +59,6 @@ Window {
         text: "Настройки"
 
         background: Rectangle {
-            id: setting_botton_background
             radius: 5
             color: "gray"
             opacity: 0.8
@@ -55,4 +70,28 @@ Window {
         }
     }
 
+    Button {
+        id: save__button
+        anchors.top: parent.top
+        anchors.left: setting__button.right
+        anchors.margins: 10
+
+        text: "Сохранить"
+
+        background: Rectangle {
+            radius: 5
+            color: "gray"
+            opacity: 0.8
+        }
+
+        onClicked: {
+            file_module_.seveResult()
+            console.log("Сохранить")
+        }
+    }
+
+    Shortcut {
+        sequences: ["Ctrl+Q"]
+        onActivated: Qt.quit()
+    }
 }
