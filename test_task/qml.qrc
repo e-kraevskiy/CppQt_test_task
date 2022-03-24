@@ -3,5 +3,6 @@
         <file>qml/main.qml</file>
         <file>widgets/qmldir</file>
         <file>widgets/SettingsPopup.qml</file>
+        <file>widgets/MouseHandlerWidget.qml</file>
     </qresource>
 </RCC>
