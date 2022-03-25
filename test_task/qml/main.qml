@@ -22,11 +22,13 @@ ApplicationWindow {
     FileDialog {
         id: file_dialog
         property url previousFolder: ""
-        title: "Please choose a folder"
         folder: shortcuts.home
         selectFolder: true
         onAccepted: {
-            file_module_.setDirPath(file_dialog.fileUrl)
+            if (selectFolder)
+                file_module_.setDirPath(file_dialog.fileUrl)
+            else
+                file_module_.setFilePath(file_dialog.fileUrl)
         }
         //Если пользователь отменил открытие файла (нажал на "отмена")
         onRejected: {

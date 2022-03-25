@@ -22,7 +22,6 @@ Item {
         }
 
         onClicked: {
-            console.log("Применить настройки")
             settings__popup.open()
         }
     }
@@ -75,7 +74,6 @@ Item {
             left__timer.start()
             mouse_handler_.initMousePos(mouse_area.mouseX, mouse_area.mouseY)
             mouse_handler_.startTimer()
-            console.log("Начать")
         }
     }
 }

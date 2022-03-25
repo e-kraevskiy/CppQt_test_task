@@ -7,6 +7,16 @@ Popup {
 
     property string message: ""
 
+    Connections {
+        target: file_module_
+        function onAppendNotify(notify_message) {
+            settings__popup.close()
+            message = notify_message
+            root.open()
+        }
+    }
+
+
     width: parent.width / 6
     height: parent.height / 10
     anchors.centerIn: parent

@@ -21,12 +21,15 @@ public:
 
 public slots:
     void setDirPath(QString dir_path);
+    void setFilePath(QString file_path);
     QString getDirPath() const {return dir_path_;};
     void setTime(int time);
     void setDistance(int distance);
     void seveResult();
 
 signals:
+    void appendNotify(QString message);
+    void setPreviousTime(int time);
     void setPreviousResult(int distance);
 private:
     QString dir_path_ = "";

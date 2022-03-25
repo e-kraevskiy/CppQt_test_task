@@ -6,6 +6,7 @@
 #include <QObject>
 #include <QWidget>
 #include <QTimer>
+#include <QDebug>
 
 class MouseHandler : public QObject {
     Q_OBJECT
@@ -22,6 +23,7 @@ public:
 
 public slots:
     void setTime(int time);
+    void setDistance(int distance);
     void startTimer();
     bool isTimerRunning();
     void calcMouseDist(int x, int y);

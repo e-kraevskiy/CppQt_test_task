@@ -12,7 +12,9 @@ Item {
     Connections {
         target: mouse_handler_
         function onUpdateTime(time) {
+            console.log("tisdf=", time)
             time_set__text.text = time.toString()
+            settings__popup.time_set = time
         }
         function onUpdateTimeLeft(time_left) {
             left_time__text.text = time_left.toFixed(2)
@@ -26,7 +28,7 @@ Item {
     anchors.right : parent.right
     anchors.margins: 10
     width: parent.width / 4
-    height: parent.height / 5
+    height: parent.height / 6
 
 
     Rectangle {
@@ -38,14 +40,7 @@ Item {
         ColumnLayout {
             anchors.fill: parent
             anchors.margins: 5
-            Text {
-                Layout.fillWidth: true
-                Layout.preferredHeight: parent.height / 5
-                Layout.alignment: Qt.AlignTop
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                text: "Координаты положения мыши"
-            }
+
             RowLayout {
                 Layout.fillWidth: true
                 Layout.preferredHeight: parent.height / 6

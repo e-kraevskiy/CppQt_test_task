@@ -5,10 +5,16 @@ MouseHandler::MouseHandler(QObject *parent) : QObject(parent) {
 }
 
 void MouseHandler::setTime(int time) {
-    std::cout << "distance_=" << distance_ << std::endl;
     time_ = time;
     timer_.setInterval(time * 1000);
+    qDebug() << "time = " << time;
     emit updateTime(time);
+}
+
+void MouseHandler::setDistance(int distance) {
+    distance_ = distance;
+    qDebug() << "distance = " << distance_;
+    emit updateDistance(distance_);
 }
 
 void MouseHandler::startTimer() {

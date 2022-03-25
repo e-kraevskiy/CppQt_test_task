@@ -29,8 +29,14 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("file_module_",
                                              &file_module_);
 
+    // Конексты к мудулу работы с файлами
+    QObject::connect(&file_module_, SIGNAL(setPreviousResult(int)),
+                &mouse_handler_, SLOT(setDistance(int)));
+    QObject::connect(&file_module_, SIGNAL(setPreviousTime(int)),
+                     &mouse_handler_, SLOT(setTime(int)));
+    // Конексты к обработчику мышы
     QObject::connect(&mouse_handler_, SIGNAL(updateDistance(int)),
-                &file_module_, SLOT(setDistance(int)));
+                     &file_module_, SLOT(setDistance(int)));
 
     QObject::connect(&mouse_handler_, SIGNAL(updateTime(int)),
                      &file_module_, SLOT(setTime(int)));

@@ -9,6 +9,37 @@ void FileModule::setDirPath(QString dir_path) {
     dir_path_ = dir_path;
 }
 
+void FileModule::setFilePath(QString file_path) {
+    file_path.remove("file://");
+    QFile file(file_path);
+    if (file.open(QIODevice::ReadOnly)) {
+        QTextStream text_stream(&file);
+        QString first_line = text_stream.readLine();
+        QString second_line = text_stream.readLine();
+        if (!first_line.contains("time=")
+                or !second_line.contains("distance=")) {
+            emit appendNotify("Неверный файл");
+            file.close();
+            return;
+        }
+        first_line.remove("time=");
+        second_line.remove("distance=");
+        if (first_line.isEmpty()) {
+            emit setPreviousTime(0);
+        } else
+            emit setPreviousTime(first_line.toInt());
+
+        if (second_line.isEmpty()) {
+            emit setPreviousResult(0);
+        } else
+            emit setPreviousResult(second_line.toInt());
+
+        file.close();
+        return;
+    }
+    emit appendNotify("Невзможно открыть файл");
+}
+
 void FileModule::setTime(int time) {
     time_ = QString::number(time);
 }
