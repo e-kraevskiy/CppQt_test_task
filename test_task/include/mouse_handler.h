@@ -10,7 +10,8 @@
 
 class MouseHandler : public QObject {
     Q_OBJECT
-
+    Q_PROPERTY(int distance MEMBER distance_ NOTIFY updateDistance)
+    Q_PROPERTY(int time MEMBER time_ NOTIFY updateTime)
 public:
     explicit MouseHandler(QObject *parent = nullptr);
 

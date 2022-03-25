@@ -34,7 +34,7 @@ bool MouseHandler::isTimerRunning() {
 }
 
 void MouseHandler::initMousePos(int x, int y) {
-    distance_ = 0;
+    distance_ = 1;
     x_mouse_ = x;
     y_mouse_ = y;
 }
