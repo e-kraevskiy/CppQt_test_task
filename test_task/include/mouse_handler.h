@@ -10,10 +10,6 @@
 
 class MouseHandler : public QObject {
     Q_OBJECT
-    Q_PROPERTY(int distance MEMBER distance_ NOTIFY updateDistance)
-    Q_PROPERTY(int time_left MEMBER time_left_ NOTIFY updateTimeLeft)
-    Q_PROPERTY(int time MEMBER time_ NOTIFY updateTime)
-
 
 public:
     explicit MouseHandler(QObject *parent = nullptr);
@@ -33,7 +29,6 @@ signals:
     void updateDistance(int distance);
     void updateTimeLeft(float time_left);
     void updateTime(int time);
-    void updateTimerRunning();
 
 private:
     QTimer timer_;

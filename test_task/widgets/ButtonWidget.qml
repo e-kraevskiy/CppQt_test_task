@@ -47,7 +47,6 @@ Item {
                 return
             }
             file_module_.seveResult()
-            console.log("Сохранить")
         }
     }
 

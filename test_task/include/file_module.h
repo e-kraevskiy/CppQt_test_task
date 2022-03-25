@@ -16,9 +16,6 @@ class FileModule : public QObject {
 public:
     explicit FileModule(QObject *parent = nullptr);
 
-
-    void readResult();
-
 public slots:
     void setDirPath(QString dir_path);
     void setFilePath(QString file_path);

@@ -64,6 +64,8 @@ void FileModule::seveResult() {
       textStream << "distance=" + distance_ + "\n";
 
       result_file.close();
-      qDebug() << "Результыты сохранены в " << file_path;
+      qDebug() << "Результыты сохранены в" << file_path;
+      return;
     }
+    emit appendNotify("Невозможно сохранить файл");
 }

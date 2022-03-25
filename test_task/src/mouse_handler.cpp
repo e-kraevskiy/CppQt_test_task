@@ -7,13 +7,13 @@ MouseHandler::MouseHandler(QObject *parent) : QObject(parent) {
 void MouseHandler::setTime(int time) {
     time_ = time;
     timer_.setInterval(time * 1000);
-    qDebug() << "time = " << time;
+//    qDebug() << "time = " << time;
     emit updateTime(time);
 }
 
 void MouseHandler::setDistance(int distance) {
     distance_ = distance;
-    qDebug() << "distance = " << distance_;
+//    qDebug() << "distance = " << distance_;
     emit updateDistance(distance_);
 }
 
@@ -34,6 +34,7 @@ bool MouseHandler::isTimerRunning() {
 }
 
 void MouseHandler::initMousePos(int x, int y) {
+    distance_ = 0;
     x_mouse_ = x;
     y_mouse_ = y;
 }

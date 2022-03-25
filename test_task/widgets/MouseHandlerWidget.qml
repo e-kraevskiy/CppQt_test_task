@@ -12,7 +12,6 @@ Item {
     Connections {
         target: mouse_handler_
         function onUpdateTime(time) {
-            console.log("tisdf=", time)
             time_set__text.text = time.toString()
             settings__popup.time_set = time
         }

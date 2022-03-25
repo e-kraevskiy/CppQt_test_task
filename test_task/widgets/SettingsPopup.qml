@@ -32,7 +32,6 @@ Popup {
                 text: "Закрыть"
 
                 onClicked: {
-                    console.log("Закрыть настройки")
                     root.close()
                 }
             }
