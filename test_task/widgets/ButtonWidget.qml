@@ -67,6 +67,14 @@ Item {
         }
 
         onClicked: {
+            if (mouse_handler_.time === 0) {
+                notify__popup.message = "Не выбран интервал времени"
+                notify__popup.open()
+                return
+            }
+            left__timer.start()
+            mouse_handler_.initMousePos(mouse_area.mouseX, mouse_area.mouseY)
+            mouse_handler_.startTimer()
             console.log("Начать")
         }
     }

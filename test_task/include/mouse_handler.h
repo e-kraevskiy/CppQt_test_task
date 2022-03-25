@@ -1,13 +1,18 @@
 #ifndef MOUSEHANDLER_H
 #define MOUSEHANDLER_H
 
+#include <iostream>
+#include <cmath>
 #include <QObject>
 #include <QWidget>
+#include <QTimer>
 
 class MouseHandler : public QObject {
     Q_OBJECT
     Q_PROPERTY(int distance MEMBER distance_ NOTIFY updateDistance)
+    Q_PROPERTY(int time_left MEMBER time_left_ NOTIFY updateTimeLeft)
     Q_PROPERTY(int time MEMBER time_ NOTIFY updateTime)
+
 
 public:
     explicit MouseHandler(QObject *parent = nullptr);
@@ -17,15 +22,25 @@ public:
 
 public slots:
     void setTime(int time);
-
+    void startTimer();
+    bool isTimerRunning();
+    void calcMouseDist(int x, int y);
+    void initMousePos(int x, int y);
 
 signals:
-    void updateDistance(int distanse);
+    void updateDistance(int distance);
+    void updateTimeLeft(float time_left);
     void updateTime(int time);
+    void updateTimerRunning();
 
 private:
+    QTimer timer_;
+    bool timer_running_ = false;
     int distance_ = 0;
     int time_ = 0;
+    float time_left_ = 0;
+    int x_mouse_;
+    int y_mouse_;
 };
 
 #endif // MOUSEHANDLER_H

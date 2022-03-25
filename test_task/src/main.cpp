@@ -16,6 +16,10 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     engine.addImportPath("qrc:/");
     const QUrl url(QStringLiteral("qrc:/qml/main.qml"));
+    // Три строчки чтобы убрать ошибки при использовании FileDialog
+    app.setOrganizationName("Amazing Company");
+    app.setOrganizationDomain("amazingcompany.com");
+    app.setApplicationName("Amazing Application");
 
     MouseHandler mouse_handler_;
     engine.rootContext()->setContextProperty("mouse_handler_",
@@ -27,10 +31,9 @@ int main(int argc, char *argv[])
 
     QObject::connect(&mouse_handler_, SIGNAL(updateDistance(int)),
                 &file_module_, SLOT(setDistance(int)));
+
     QObject::connect(&mouse_handler_, SIGNAL(updateTime(int)),
                      &file_module_, SLOT(setTime(int)));
-
-
 
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {

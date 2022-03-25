@@ -6,8 +6,8 @@ import QtQuick.Layouts 1.15
 Popup {
     id: root
 
-    width: parent.width / 4
-    height: parent.height / 7
+    width: parent.width / 3.5
+    height: parent.height / 6
     anchors.centerIn: parent
     closePolicy: Popup.CloseOnPressOutside
     modal: true
@@ -66,7 +66,7 @@ Popup {
 
             RowLayout {
                 Layout.fillWidth: true
-                Layout.preferredHeight: parent.height / 5
+                Layout.preferredHeight: parent.height / 4
 
                 Button {
                     Layout.preferredWidth: root.width / 3
@@ -85,8 +85,10 @@ Popup {
                     text: "Применить"
 
                     onClicked: {
-                        mouse_handler_.time =
-                                    parseInt(second_amount__text_field.text)
+                        mouse_handler_.setTime(
+                                    parseInt(second_amount__text_field.text))
+//                        main_timer.interval =
+//                                second_amount__text_field.text * 1000
                         console.log("Применить настройки")
                     }
                 }

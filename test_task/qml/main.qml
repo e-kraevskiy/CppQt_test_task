@@ -10,6 +10,8 @@ import widgets 1.0
 ApplicationWindow {
     id: main__window
 
+    minimumWidth: 1280
+    minimumHeight: 720
     width: Screen.desktopAvailableWidth
     height: Screen.desktopAvailableHeight
 
@@ -57,9 +59,23 @@ ApplicationWindow {
     ButtonWidget {}
 
 
+    Timer {
+        id: left__timer
+        interval: 10
+        repeat: true
+        onTriggered: {
+            mouse_handler_.calcMouseDist(mouse_area.mouseX,
+                                         mouse_area.mouseY)
+            if (!mouse_handler_.isTimerRunning()) {
+                left__timer.stop()
+            }
+        }
+    }
+
 
     Shortcut {
         sequences: ["Ctrl+Q"]
         onActivated: Qt.quit()
     }
+
 }
